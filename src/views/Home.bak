@@ -1,0 +1,130 @@
+<template>
+  <div id="home-container" class="bg-black">
+    <div id="home" class="max-w-screen-sm mx-auto shadow-2xl relative z-10">
+      <div
+        class="grid grid-rows-10 pb-4 gap-x-4 h-full place-items-center grid-cols-4 gap-y-3"
+      >
+        <div class="col-span-full justify-self-center ">
+          <img
+            src="/assets/images/frontpage/boneka-top-left-corner.png"
+            class="boneka-top"
+          />
+          <img src="/assets/images/frontpage/logo-top.png" class="logo-top" />
+          <img src="/assets/images/frontpage/coldiac-header-rev.jpg" />
+        </div>
+        <div id="reflection-template" class="col-span-full text-center">
+          <router-link to="/generator">
+            <!-- 218 204 179 -->
+            <p class="py-2 px-3 text-2xl text-white">Reflection Template</p>
+          </router-link>
+        </div>
+        <div class="col-span-full text-2xl justify-self-center text-white">
+          Listen Beautiful Day Now!
+        </div>
+        <div
+          v-for="(dspAsset, index) in dspAssets"
+          :key="dspAsset.name"
+          class="col-span-2 col-start-2 w-full"
+        >
+          <button
+            @click="handleDspClick(index), $event"
+            class="bg-btn-theme py-2 w-full rounded-full text-white"
+          >
+            <img :key="index" :src="dspAsset.img" class="mx-auto" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data: () => ({
+    dspAssets: [
+      {
+        name: "spotify",
+        img: `/assets/images/frontpage/spotify-optimized.png`,
+        url: `https://open.spotify.com/album/03ZB5kFwcHIijh2urFzcOV?referral=labelaffiliate&utm_source=1011lijE7fjR&utm_medium=Indie_Believe&utm_campaign=labelaffiliate`,
+      },
+      {
+        name: "joox",
+        img: `/assets/images/frontpage/joox-optimized.png`,
+        url: `https://www.joox.com/id/single/F7W05O9U7CsaTG0qViJ9ow==`,
+      },
+      {
+        name: "apple",
+        img: `/assets/images/frontpage/apple-optimized.png`,
+        url: `https://music.apple.com/id/album/beautiful-day-single/1585290908?at=1l3v9Tx&ct=BL&uo=4&app=itunes`,
+      },
+      {
+        name: "youtube",
+        img: `/assets/images/frontpage/youtube-music-optimized.png`,
+        url: `https://www.youtube.com/watch?v=pFWqFdIT5do`,
+      },
+      {
+        name: "deezer",
+        img: `/assets/images/frontpage/deezer-optimized.png`,
+        url: `https://www.deezer.com/us/album/257614062`,
+      },
+      {
+        name: "resso",
+        img: `/assets/images/frontpage/resso-optimized.png`,
+        url: `https://h5.resso.app/album?id=7005867855832958978&shared_by=6817001836819973122&channel=whatsapp&sim_region=id`,
+      },
+    ],
+  }),
+  methods: {
+    handleDspClick: function(index) {
+      window.location.href = String(this.dspAssets[index].url);
+    },
+  },
+};
+</script>
+<style scoped>
+#home-container {
+  background-color: #dabf9a;
+  background-image: url("/assets/images/frontpage/bg-blur.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+#home-container::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  background-color: #dabf9a;
+  opacity: 0.7;
+}
+#home {
+  background-color: #e2d5c2;
+  background-image: url("/assets/images/frontpage/lampu.png"),
+    url("/assets/images/frontpage/boneka.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom right, -15% 70%;
+  background-size: 33%, 40%;
+}
+.boneka-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.logo-top {
+  width: 124px;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#reflection-template {
+  margin-top: -10%;
+  border-radius: 14px;
+  background-color: #c4c4c4;
+}
+.bg-btn-theme {
+  background-color: #dabf9a;
+}
+</style>
